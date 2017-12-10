@@ -1,0 +1,17 @@
+
+public class Npcs {
+	private String name;
+	
+	Npcs(String name){
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	//could extended later
+	public String toString() {
+		return name;
+	}
+}
