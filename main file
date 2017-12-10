@@ -1,0 +1,96 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+public class main {
+	static Scanner user = new Scanner(System.in);
+	static Npcs Tutorial = new Npcs("Oddperson");
+	
+	//static System.out.println("Enter character name: ");
+	//static String name = user.nextLine();
+	//static Player Pname = new Player(name);
+	
+	public static void main(String[] args) {
+		Frame();
+		System.out.println(Tutorial + ":");
+		System.out.println("Ahh, your finally awake! Glad you could join us in the world of the living. "
+				+ "\n Since I seem to have been the only one to come check on you, Might I ask you what"
+				+ " your name is?");
+		String[] answer = {"1.)What buisness is it of yours?,", " 2.)Sure!, ", " 3.)Get lost!"};
+		printArray(answer);
+		response();
+		
+	}
+	public static void Frame() {
+		//Creating instance of JFrame
+		JFrame frame = new JFrame("Name of game");
+		//Setting the width and height of frame
+		frame.setSize(1000,1000);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		//adding panel to frame
+		frame.add(panel);
+		panel.setLayout(null);
+		
+		//creating JLabel
+		JLabel ulabel = new JLabel("User");
+		/*This method specifies the location and size of component. setBounds(x, y, width, height)
+		 * here (x,y) are cordinates from the top left corner and remaining two arguments are the 
+		 * width and height of the component. */
+		ulabel.setBounds(50,20,100,25);
+		panel.add(ulabel);
+		
+		//Creating text field where user is supposed to enter player name
+		JTextField uText = new JTextField(20);
+		uText.setBounds(100,20, 165, 25);
+		panel.add(uText);
+		
+		//creates play button
+		JButton launchB = new JButton("Play");
+		launchB.setBounds(10, 80, 250, 25);
+		panel.add(launchB);
+		//setting the frame visibility to true
+		frame.setVisible(true);
+	}
+	
+	public static void printArray(String[] Sstuff) {
+		System.out.println();
+		
+		for(int i = 0; i < Sstuff.length; i++) {
+			System.out.printf(Sstuff[i]);
+		}
+		System.out.println();
+	}
+	
+	public static void response() {
+		int Panswer = user.nextInt();
+		String[] answer = {"1.)What buisness is it of yours?,", " 2.)Sure!, ", " 3.)Get lost!"};
+		
+		switch(Panswer) {
+			case(1):
+				System.out.println("\n" + Tutorial + ":"
+						+ "\nWell that is a little bit rude! Let us try this again.");
+				printArray(answer);
+				response();
+				break;
+				
+			case(2):
+				System.out.println(Tutorial + ":"
+						+ "\nGreat, nice to meet you " /*+ Pname*/
+						+ "\nlets get started on this little adventure!");
+				//send to tutorial continue method
+				break;
+			default:
+				System.out.println("\n" + Tutorial + ":"
+						+ "\nHow rude! Well if you turely mean that I guess I will..."
+						+ "\nThe next thing you know the room starts spinning and you black out");
+				//send to the start of the story
+				break;
+		}
+	}
+}
